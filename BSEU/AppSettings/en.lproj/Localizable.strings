@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  BSEU
+
+  Created by Kirill Kubarskiy on 18.03.23.
+  Copyright © 2023 Kirill Kubarskiy. All rights reserved.
+*/
+
+/* TabBar */
+"scheduleItem" = "Schedule";
+"teachersItem" = "Teachers";
+"infoItem" = "Info";
+
+/* TextField placeholder */
+"textFieldPlaceholder" = "Search here...";
+
+/* Schedule */
+"chooseGroupButton" = "Choose group";
+"checkScheduleButton" = "Check schedule";
+"titleScheduleLabel" = "Schedule";
+"numberOfPairLabel" = "Class time";
+"audienceLabel" = "Audience/building";
+"subjectLabel" = "Subject";
+"typeLabel" = "Lesson type";
+"date" = "Date";
+
+/* Alert */
+"alertTitle" = "Oops!";
+"alertMessageFirst" = "Perhaps group";
+"alertMessageSecond" = "is on holidays. Choose another group.";
+"alertOk" = "OK";
+"alertCancel" = "Cancel";
+"noInternetTitle" = "No internet";
+"noInternetMessage" = "Check your internet connection.";
+
+/* Groups */
+"allGroups" = "All groups";
+"savedGroups" = "Saved groups";
+
+/* Teachers */
+"titleTeachersLabel" = "Teachers";
+
+/* Info */
+"titleInfoLabel" = "Info";
+"copyrightLabel" = "Copyright © 2023 Kirill Kubarskiy. All rights reserved.";
+"shareAppButton" = "Share the app";
+"suggestionLabel" = "You can leave your feedback on improving the app in the AppStore.";

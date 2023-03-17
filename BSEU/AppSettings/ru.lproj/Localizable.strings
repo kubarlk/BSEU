@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  BSEU
+
+  Created by Kirill Kubarskiy on 18.03.23.
+  Copyright © 2023 Kirill Kubarskiy. All rights reserved.
+*/
+
+/* TabBar */
+"scheduleItem" = "Расписание";
+"teachersItem" = "Преподаватели";
+"infoItem" = "Инфо";
+
+/* TextField placeholder */
+"textFieldPlaceholder" = "Ищите здесь...";
+
+/* Schedule */
+"chooseGroupButton" = "Выбрать группу";
+"checkScheduleButton" = "Посмотреть расписание";
+"titleScheduleLabel" = "Расписание";
+"numberOfPairLabel" = "Время занятия";
+"audienceLabel" = "Аудитория/корпус";
+"subjectLabel" = "Дисциплина";
+"typeLabel" = "Тип занятия";
+"date" = "Дата";
+
+/* Alert */
+"alertTitle" = "Упс!";
+"alertMessageFirst" = "Возможно, в группе";
+"alertMessageSecond" = "сейчас каникулы. Выберите другую группу.";
+"alertOk" = "ОК";
+"alertCancel" = "Отменить";
+"noInternetTitle" = "Нет соединения";
+"noInternetMessage" = "Проверьте ваше соединение с интернетом.";
+
+/* Groups */
+"allGroups" = "Все группы";
+"savedGroups" = "Сохранённые";
+
+/* Teachers */
+"titleTeachersLabel" = "Преподаватели";
+
+/* Info */
+"titleInfoLabel" = "Инфо";
+"copyrightLabel" = "Авторское право © 2023 Кирилл Кубарский. Все права защищены.";
+"shareAppButton" = "Поделиться приложением";
+"suggestionLabel" = "Вы можете оставить свой отзыв по улучшению приложения в AppStore.";
