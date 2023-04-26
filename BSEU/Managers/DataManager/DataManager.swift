@@ -14,6 +14,7 @@ protocol DataManagerProtocol {
     func fetchTeachers(completion: @escaping([Teacher]) -> Void)
     func fetchEngTeachers(completion: @escaping([Teacher]) -> Void)
     func fetchSchedule(with id: String, completion: @escaping ([LessonsGrouped]) -> Void)
+    func fetchEngSchedule(with id: String, completion: @escaping ([LessonsGrouped]) -> Void)
     //DatabaseManager
     func saveSavedGroups(_ item: Item)
     func getSavedGroups() -> [Item]?
@@ -104,6 +105,14 @@ final class DataManager: DataManagerProtocol {
     
     func fetchSchedule(with id: String, completion: @escaping ([LessonsGrouped]) -> Void) {
         networkManager.loadSchedule(with: id) { [weak self] lessonsGrouped in
+            guard let lessonsGrouped = lessonsGrouped else { return }
+            self?.lessonsGrouped = lessonsGrouped
+            completion(lessonsGrouped)
+        }
+    }
+    
+    func fetchEngSchedule(with id: String, completion: @escaping ([LessonsGrouped]) -> Void) {
+        networkManager.loadEngSchedule(with: id) { [weak self] lessonsGrouped in
             guard let lessonsGrouped = lessonsGrouped else { return }
             self?.lessonsGrouped = lessonsGrouped
             completion(lessonsGrouped)

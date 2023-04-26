@@ -129,16 +129,20 @@ final class ScheduleTableViewCell: UITableViewCell {
     
         let lessonTime = LessonTime(rawValue: lesson.numberOfPair)
       
-        let pairBoldText = "\("numberOfPairLabel".localized()): "
+//        let pairBoldText = "\("numberOfPairLabel".localized()): "
+        let pairBoldText = "\("🕒")  "
         let pairNormalText = "\(lessonTime?.stringValue ?? "")"
         
-        let audienceBoldText = "\("audienceLabel".localized()): "
+//        let audienceBoldText = "\("audienceLabel".localized()): "
+        let audienceBoldText = "\("🏢")  "
         let audienceNormalText = "\(lesson.audience)"
         
-        let subjectBoldText = "\("subjectLabel".localized()): "
+//        let subjectBoldText = "\("subjectLabel".localized()): "
+        let subjectBoldText = "\("📓")  "
         let subjectNormalText = "\(lesson.subject)"
         
-        let typeBoldText = "\("typeLabel".localized()): "
+//        let typeBoldText = "\("typeLabel".localized()): "
+        let typeBoldText = "\("🔔")  "
         let typeNormalText = "\(lesson.type)"
 
         setAttributedText(for: numberOfPairLabel, boldText: pairBoldText, normalText: pairNormalText)

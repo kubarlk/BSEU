@@ -13,6 +13,7 @@ protocol NetworkManagerProtocol {
     func loadTeachers(completion: @escaping (Result<[Teacher], Error>) -> Void)
     func loadEngTeachers(completion: @escaping (Result<[Teacher], Error>) -> Void)
     func loadSchedule(with id: String, completion: @escaping ([LessonsGrouped]?) -> Void)
+    func loadEngSchedule(with id: String, completion: @escaping ([LessonsGrouped]?) -> Void)
     func fetchItem(from groups: [Group]) -> [Item]
 }
 
@@ -150,6 +151,56 @@ final class NetworkManager: NetworkManagerProtocol {
     //MARK: loadSchedule
     func loadSchedule(with id: String, completion: @escaping ([LessonsGrouped]?) -> Void) {
         guard let url = URL(string: "http://bseu.by/mschedule/\(id).js") else {
+            completion(nil)
+            fatalError("Invalid URL")
+        }
+
+        let session = URLSession.shared
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(nil)
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                completion(nil)
+                print("Invalid response")
+                return
+            }
+            
+            guard let jsonData = data else {
+                completion(nil)
+                print("No data received")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let lessons = try decoder.decode([Lessons].self, from: jsonData)
+                //grouping
+                var lessonsGrouped: [LessonsGrouped] = []
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yy.MM.dd" // set the date format string
+                let groupedLessons = Dictionary(grouping: lessons, by: { dateFormatter.date(from: $0.date)! }) // convert the date strings to Date objects using the date formatter
+                let sortedGroupedLessons = groupedLessons.sorted(by: { $0.key < $1.key }) // sort the grouped lessons by date
+                for (date, lessons) in sortedGroupedLessons {
+                    let dateString = dateFormatter.string(from: date) // convert the Date object back to a string using the date formatter
+                    let lessonGrouped = LessonsGrouped(date: dateString, lessons: lessons)
+                    lessonsGrouped.append(lessonGrouped)
+                }
+                print(lessonsGrouped)
+                completion(lessonsGrouped)
+            } catch {
+                completion(nil)
+                print("Error decoding JSON: \(error.localizedDescription)")
+            }
+        }
+        task.resume()
+    }
+    
+    func loadEngSchedule(with id: String, completion: @escaping ([LessonsGrouped]?) -> Void) {
+        guard let url = URL(string: "http://bseu.by/mschedule/eng/\(id).js") else {
             completion(nil)
             fatalError("Invalid URL")
         }

@@ -67,19 +67,36 @@ class ScheduleViewController: UIViewController {
     }
     
     private func presentSchedule() {
-        self.viewModel.fetchSchedule(with: self.idGroup) {
-            DispatchQueue.main.async {
-                if self.viewModel.lessonsGrouped.isEmpty {
-                    self.presentAlert(title: "alertTitle".localized(), message: "\("alertMessageFirst".localized()) \(self.groupName) \("alertMessageSecond".localized())")
-                    self.setupAnimation()
-                } else {
-                    self.containerAnimView.removeFromSuperview()
-                    self.tableView.isHidden = false
-                    self.tableView.reloadData()
+        let languageCode = Locale.current.language.languageCode?.identifier ?? "ru"
+        if languageCode == "en" {
+            self.viewModel.fetchEngSchedule(with: self.idGroup) {
+                DispatchQueue.main.async {
+                    if self.viewModel.lessonsGrouped.isEmpty {
+                        self.presentAlert(title: "alertTitle".localized(), message: "\("alertMessageFirst".localized()) \(self.groupName) \("alertMessageSecond".localized())")
+                        self.setupAnimation()
+                    } else {
+                        self.containerAnimView.removeFromSuperview()
+                        self.tableView.isHidden = false
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        } else {
+            self.viewModel.fetchSchedule(with: self.idGroup) {
+                DispatchQueue.main.async {
+                    if self.viewModel.lessonsGrouped.isEmpty {
+                        self.presentAlert(title: "alertTitle".localized(), message: "\("alertMessageFirst".localized()) \(self.groupName) \("alertMessageSecond".localized())")
+                        self.setupAnimation()
+                    } else {
+                        self.containerAnimView.removeFromSuperview()
+                        self.tableView.isHidden = false
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }
     }
+
     
     private func setupViews() {
         view.backgroundColor = UIColor(named: "bgColor")
@@ -187,7 +204,6 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.addSubview(headerLabel)
         headerLabel.textAlignment = .center
         headerLabel.text = viewModel.lessonsGrouped[section].date
-        print("HEADER: \(viewModel.lessonsGrouped[section].lessons)")
         headerLabel.textColor = UIColor(named: "mainTitleLabelColor")
         headerLabel.font = UIFont(descriptor: UIFontDescriptor.init(name: "Chalkboard SE", size: 25), size: 25)
         
@@ -202,7 +218,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let lessons = viewModel.lessonsGrouped[indexPath.section].lessons
         let date = viewModel.lessonsGrouped[indexPath.section].date
-        var finalString = "\("date".localized()): \(date)\n\n"
+        var finalString = "📅  \(date)\n\n"
         lessons.forEach { lesson in
             let numberOfPair = lesson.numberOfPair
             let lessonTime = LessonTime(rawValue: numberOfPair)
@@ -211,7 +227,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
             let audience = lesson.audience
             let pairTime = "\(lessonTime?.stringValue ?? "")"
             
-            finalString += "\("numberOfPairLabel".localized()): \(pairTime)\n\("subjectLabel".localized()): \(subject)\n\("audienceLabel".localized()): \(audience)\n\("typeLabel".localized()): \(type)\n\n"
+            finalString += "⌚  \(pairTime)\n🏢  \(audience)\n📓  \(subject)\n🔔  \(type)\n\n"
         }
         let activityVC = UIActivityViewController(activityItems: [finalString], applicationActivities: nil)
         present(activityVC, animated: true, completion: nil)

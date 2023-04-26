@@ -25,4 +25,11 @@ final class ScheduleViewModel {
             completion()
         }
     }
+    
+    func fetchEngSchedule(with id: String, competion: @escaping() -> Void) {
+        dataManager.fetchEngSchedule(with: id) { [weak self] lessonsGrouped in
+            self?.lessonsGrouped = lessonsGrouped
+            competion()
+        }
+    }
 }
