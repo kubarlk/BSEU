@@ -34,3 +34,6 @@
 - [telegram: @kubarlk](https://t.me/kubarlk)
 - [linkedin: Kirill Kubarskiy](https://www.linkedin.com/in/kirill-kubarskiy%EF%A3%BF-0b420619a/)
 - [Email](mailto:kkubarskiy@gmail.com)
+
+### 👨🏻‍💻 Download app
+- [AppStore: BSEU](https://apps.apple.com/ru/app/6446797482)
