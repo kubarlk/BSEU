@@ -17,6 +17,9 @@ protocol DatabaseManagerProtocol {
     func getItems() -> [Item]?
     func saveItem(_ item: Item)
     func deleteGroupEntity()
+    func saveGroupID(_ id: String, _ name: String)
+    func removeGroupID()
+    func fetchGroupID() -> [SavedGroupID]?
 }
 
 final class DatabaseManager: DatabaseManagerProtocol {
@@ -57,11 +60,9 @@ final class DatabaseManager: DatabaseManagerProtocol {
         
         do {
             try managedContext.save()
-            print("Saved")
         } catch let error as NSError {
             print("Error - \(error)")
         }
-        print("SAVED ITEM \(item)")
     }
     
     func getSavedGroups() -> [Item]? {
@@ -97,12 +98,67 @@ final class DatabaseManager: DatabaseManagerProtocol {
             let results = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
             results?.forEach { managedContext.delete($0) }
             try managedContext.save()
-            print("Removed")
         } catch let error as NSError {
             print("Error - \(error)")
         }
-        print("REMOVED ITEM \(item)")
     }
+
+  //MARK: GroupID
+  func saveGroupID(_ id: String, _ name: String) {
+      removeGroupID()
+      let managedContext = persistentContainer.viewContext
+
+      guard let entity = NSEntityDescription.entity(forEntityName: "GroupID", in: managedContext) else { return }
+
+      let group = NSManagedObject(entity: entity, insertInto: managedContext)
+
+      group.setValue(id, forKey: "id")
+      group.setValue(name, forKey: "name")
+
+
+      do {
+          try managedContext.save()
+      } catch let error as NSError {
+          print("Error - \(error)")
+      }
+  }
+
+  func fetchGroupID() -> [SavedGroupID]? {
+
+      let managedContext = persistentContainer.viewContext
+
+      let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GroupID")
+
+      do {
+          let objects = try managedContext.fetch(fetchRequest)
+          var items = [SavedGroupID]()
+          for object in objects {
+            guard let name = object.value(forKey: "name") as? String,
+                  let id = object.value(forKey: "id") as? String
+            else { return nil }
+              let item = SavedGroupID(id: id, name: name)
+              items.append(item)
+          }
+          return items
+      } catch let error as NSError {
+          print("Error - \(error)")
+      }
+      return nil
+  }
+
+  func removeGroupID() {
+    let managedContext = persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GroupID")
+
+        do {
+            let results = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
+            results?.forEach { managedContext.delete($0) }
+            try managedContext.save()
+            print("REMOVED ALL GroupIDs")
+        } catch let error as NSError {
+            print("Error - \(error)")
+        }
+  }
 
     
     

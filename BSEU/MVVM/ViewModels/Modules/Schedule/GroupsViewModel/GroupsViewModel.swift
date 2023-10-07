@@ -36,5 +36,13 @@ final class GroupsViewModel {
     func removeSavedGroup(_ item: Item) {
         dataManager.removeSavedGroup(item)
     }
+
+    func getSavedGroupID() -> [SavedGroupID]? {
+       dataManager.fetchGroupID()
+    }
+
+    func saveGroupID(_ id: String, _ name: String) {
+      dataManager.saveGroupID(id, name)
+    }
 }
 

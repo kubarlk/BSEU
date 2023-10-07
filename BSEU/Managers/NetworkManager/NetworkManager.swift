@@ -21,7 +21,7 @@ final class NetworkManager: NetworkManagerProtocol {
     
     func loadGroups(completion: @escaping(University?) -> Void) {
         
-        guard let url = URL(string: "") else {
+        guard let url = URL(string: "http://bseu.by/mschedule/dict.js") else {
             return
         }
         
@@ -150,7 +150,7 @@ final class NetworkManager: NetworkManagerProtocol {
     }
     //MARK: loadSchedule
     func loadSchedule(with id: String, completion: @escaping ([LessonsGrouped]?) -> Void) {
-        guard let url = URL(string: "") else {
+        guard let url = URL(string: "http://bseu.by/mschedule/\(id).js") else {
             completion(nil)
             fatalError("Invalid URL")
         }
@@ -200,7 +200,7 @@ final class NetworkManager: NetworkManagerProtocol {
     }
     
     func loadEngSchedule(with id: String, completion: @escaping ([LessonsGrouped]?) -> Void) {
-        guard let url = URL(string: "") else {
+        guard let url = URL(string: "http://bseu.by/mschedule/eng/\(id).js") else {
             completion(nil)
             fatalError("Invalid URL")
         }

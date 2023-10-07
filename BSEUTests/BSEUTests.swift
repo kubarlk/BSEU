@@ -115,6 +115,10 @@ final class ViewModelsTests: XCTestCase {
 
 // Mock implementation of the DataManagerProtocol for testing purposes
 class MockDataManager: DataManagerProtocol {
+  func fetchEngSchedule(with id: String, completion: @escaping ([BSEU.LessonsGrouped]) -> Void) {}
+  func saveGroupID(_ id: String, _ name: String) {}
+  func fetchGroupID() -> [BSEU.SavedGroupID]? { return nil }
+
     
     var items: [Item]?
     var savedGroups: [Item] = []

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		352715AE29C5199D0080037F /* Group.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 352715AC29C5199D0080037F /* Group.xcdatamodeld */; };
+		3587178D2AD0AB18008143F9 /* GroupID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587178C2AD0AB18008143F9 /* GroupID.swift */; };
+		3587178F2AD17DB6008143F9 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = 3587178E2AD17DB6008143F9 /* info.json */; };
 		35C5219529C4CEEA00D9E064 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C5219429C4CEEA00D9E064 /* AppDelegate.swift */; };
 		35C5219729C4CEEA00D9E064 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C5219629C4CEEA00D9E064 /* SceneDelegate.swift */; };
 		35C5219C29C4CEEA00D9E064 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C5219A29C4CEEA00D9E064 /* Main.storyboard */; };
@@ -92,6 +94,8 @@
 
 /* Begin PBXFileReference section */
 		352715AD29C5199D0080037F /* Group.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Group.xcdatamodel; sourceTree = "<group>"; };
+		3587178C2AD0AB18008143F9 /* GroupID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupID.swift; sourceTree = "<group>"; };
+		3587178E2AD17DB6008143F9 /* info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
 		35C5219129C4CEEA00D9E064 /* BSEU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSEU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C5219429C4CEEA00D9E064 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35C5219629C4CEEA00D9E064 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 		35C521AC29C4CF3700D9E064 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				3587178E2AD17DB6008143F9 /* info.json */,
 				35C5223329C4DCDC00D9E064 /* connection.json */,
 				35C5223529C4DCDC00D9E064 /* owlAnimation.json */,
 				35C5223629C4DCDC00D9E064 /* owlGreetingAnimation.json */,
@@ -491,6 +496,7 @@
 			children = (
 				35C5220529C4D6C800D9E064 /* LessonsGrouped.swift */,
 				35C5220729C4D6D600D9E064 /* Lessons.swift */,
+				3587178C2AD0AB18008143F9 /* GroupID.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -914,6 +920,7 @@
 				35C5223029C4DCBF00D9E064 /* LoadingAnimation.json in Resources */,
 				35C5225A29C5035900D9E064 /* TabBar.storyboard in Resources */,
 				35C5225529C502CD00D9E064 /* TeachersData.json in Resources */,
+				3587178F2AD17DB6008143F9 /* info.json in Resources */,
 				35C5219E29C4CEEC00D9E064 /* Assets.xcassets in Resources */,
 				35C5226229C5043A00D9E064 /* Groups.storyboard in Resources */,
 				35C5227429C514DA00D9E064 /* Localizable.strings in Resources */,
@@ -964,6 +971,7 @@
 				35C5224229C4DDA200D9E064 /* UIActivityIndicatorView+Extension.swift in Sources */,
 				35C521EC29C4D33600D9E064 /* LoadingViewController.swift in Sources */,
 				35C521F029C4D38A00D9E064 /* TabBarController.swift in Sources */,
+				3587178D2AD0AB18008143F9 /* GroupID.swift in Sources */,
 				35C521FA29C4D58000D9E064 /* GroupsViewController.swift in Sources */,
 				35C5219729C4CEEA00D9E064 /* SceneDelegate.swift in Sources */,
 				35C5220429C4D69C00D9E064 /* Teacher.swift in Sources */,
@@ -1160,7 +1168,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = ZN4FUVZKU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BSEU/Application/Info.plist;
@@ -1169,11 +1177,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = kubarlk.BSEU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1188,7 +1197,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = ZN4FUVZKU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BSEU/Application/Info.plist;
@@ -1197,11 +1206,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = kubarlk.BSEU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

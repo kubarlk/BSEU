@@ -32,4 +32,9 @@ final class ScheduleViewModel {
             competion()
         }
     }
+
+    func fetchGroupID() -> [SavedGroupID]? {
+      guard let savedGroupID = dataManager.fetchGroupID() else { return nil }
+      return savedGroupID
+    }
 }
