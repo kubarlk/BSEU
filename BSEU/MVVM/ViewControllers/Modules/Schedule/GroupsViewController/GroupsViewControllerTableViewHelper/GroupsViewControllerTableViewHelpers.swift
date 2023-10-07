@@ -175,5 +175,15 @@ class GroupsViewControllerTableViewHelpers {
             viewModel.saveSavedGroup(group)
         }
     }
+
+    func saveGroupID(_ id: String, _ name: String) {
+      viewModel.saveGroupID(id, name)
+    }
+
+    func fetchGroupID() -> [SavedGroupID]? {
+      viewModel.getSavedGroupID()
+    }
+
+
 }
 

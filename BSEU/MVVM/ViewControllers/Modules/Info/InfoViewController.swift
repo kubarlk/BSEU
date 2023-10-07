@@ -13,6 +13,8 @@ class InfoViewController: UIViewController {
     
     var viewModel: InfoViewModel!
     
+    private let animationView = LottieAnimationView(name: "info")
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "titleInfoLabel".localized()
@@ -71,7 +73,7 @@ class InfoViewController: UIViewController {
             }
         })
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            guard  let url = URL(string: "https://vk.com/kubarlkv2") else { return }
+            guard  let url = URL(string: "https://apps.apple.com/ru/app/6446797482") else { return }
             let activityVC = UIActivityViewController(activityItems: [
                 url
             ], applicationActivities: nil)
@@ -86,8 +88,10 @@ class InfoViewController: UIViewController {
         view.addSubview(copyrightLabel)
         view.addSubview(shareButton)
         view.addSubview(suggestionLabel)
+        view.addSubview(animationView)
         shareButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         setupButtonShadow()
+        setupInfoAnim()
         setupConstraints()
     }
     
@@ -99,6 +103,23 @@ class InfoViewController: UIViewController {
         shareButton.layer.shadowRadius = 4
         shareButton.layer.masksToBounds = false
     }
+    
+    private func setupInfoAnim() {
+        view.addSubview(animationView)
+        animationView.loopMode = .loop
+        animationView.contentMode = .scaleAspectFit
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            animationView.widthAnchor.constraint(equalToConstant: 250),
+            animationView.heightAnchor.constraint(equalToConstant: 250)
+        ])
+        
+        animationView.play()
+    }
+
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([

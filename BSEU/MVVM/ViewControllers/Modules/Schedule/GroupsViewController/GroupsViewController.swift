@@ -256,10 +256,12 @@ extension GroupsViewController: UITableViewDelegate, UITableViewDataSource {
             let group = tableViewHelper.getGroup(at: indexPath.row)
             // Check if the group is already in the database
             tableViewHelper.saveSavedGroup(group)
+            tableViewHelper.saveGroupID(group.id, group.name)
             delegate?.didSelectCell(withData: group)
             dismiss(animated: true)
         case savedGroupsTableView:
             let group = tableViewHelper.getSavedGroup(at: indexPath.row)
+            tableViewHelper.saveGroupID(group.id, group.name)
             delegate?.didSelectCell(withData: group)
             dismiss(animated: true)
         default:

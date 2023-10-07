@@ -19,6 +19,8 @@ protocol DataManagerProtocol {
     func saveSavedGroups(_ item: Item)
     func getSavedGroups() -> [Item]?
     func removeSavedGroup(_ item: Item)
+    func saveGroupID(_ id: String, _ name: String)
+    func fetchGroupID() -> [SavedGroupID]?
 }
 
 final class DataManager: DataManagerProtocol {
@@ -58,7 +60,7 @@ final class DataManager: DataManagerProtocol {
 
     
     private func fetchGroupsFromDatabase(completion: @escaping ([Item]?) -> Void) {
-        print("fetchGroupsFromDatabase")
+
         if let groupsArray = self.groupsArray {
             completion(groupsArray)
         } else {
@@ -118,6 +120,15 @@ final class DataManager: DataManagerProtocol {
             completion(lessonsGrouped)
         }
     }
+
+    func saveGroupID(_ id: String, _ name: String) {
+      databaseManager.saveGroupID(id, name)
+    }
+
+    func fetchGroupID() -> [SavedGroupID]? {
+      databaseManager.fetchGroupID()
+    }
+
 
     func saveSavedGroups(_ item: Item) {
         databaseManager.saveSavedGroups(item)

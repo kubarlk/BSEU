@@ -67,7 +67,16 @@ class ScheduleViewController: UIViewController {
     }
     
     private func presentSchedule() {
-        let languageCode = Locale.current.language.languageCode?.identifier ?? "ru"
+      guard let group = self.viewModel.fetchGroupID() else {
+          return
+      }
+
+      if !group.isEmpty {
+          self.idGroup = group[0].id
+          self.groupName = group[0].name
+      }
+
+        let languageCode = Locale.current.languageCode ?? "ru"
         if languageCode == "en" {
             self.viewModel.fetchEngSchedule(with: self.idGroup) {
                 DispatchQueue.main.async {
@@ -75,6 +84,7 @@ class ScheduleViewController: UIViewController {
                         self.presentAlert(title: "alertTitle".localized(), message: "\("alertMessageFirst".localized()) \(self.groupName) \("alertMessageSecond".localized())")
                         self.setupAnimation()
                     } else {
+                        self.owlGreetingView.removeFromSuperview()
                         self.containerAnimView.removeFromSuperview()
                         self.tableView.isHidden = false
                         self.tableView.reloadData()
@@ -88,6 +98,7 @@ class ScheduleViewController: UIViewController {
                         self.presentAlert(title: "alertTitle".localized(), message: "\("alertMessageFirst".localized()) \(self.groupName) \("alertMessageSecond".localized())")
                         self.setupAnimation()
                     } else {
+                        self.owlGreetingView.removeFromSuperview()
                         self.containerAnimView.removeFromSuperview()
                         self.tableView.isHidden = false
                         self.tableView.reloadData()

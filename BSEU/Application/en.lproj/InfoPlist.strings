@@ -1,0 +1,11 @@
+/*
+  InfoPlist.strings
+  BSEU
+
+  Created by Kirill Kubarskiy on 27.04.23.
+  Copyright © 2023 Kirill Kubarskiy. All rights reserved.
+*/
+
+
+"CFBundleDisplayName" = "BSEU";
+"CFBundleName" = "BSEU";
